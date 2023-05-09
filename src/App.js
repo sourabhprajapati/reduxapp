@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
-
+import { useSelector,useDispatch } from 'react-redux';
+import { incNumber,decNumber,multNumber,divNumber} from "./actions/index"
 function App() {
+  const myState = useSelector((state)=> state. changeTheNumber);
+  const myOtherState = useSelector((state)=> state. multTheNumber);
+  const dispatch = useDispatch();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <h1>Increment/Decrement counter</h1>
+        <h4>Using React and Redux</h4>
+        <a title="Decrement" onClick={()=>dispatch(decNumber())}><span> - </span></a>
+        <input name="quantity" typt="text" value={myState}/>
+        <a title="Increment" onClick={()=>dispatch(incNumber())}><span> + </span></a>
+
+        <h1>Multiplication/Divide counter</h1>
+        <h4>Using React and Redux</h4>
+        <a title="Decrement" onClick={()=>dispatch(divNumber())}><span> / </span></a>
+        <input name="quantity" typt="text" value={ myOtherState}/>
+        <a title="Increment" onClick={()=>dispatch(multNumber())}><span> * </span></a>
+
     </div>
   );
 }
